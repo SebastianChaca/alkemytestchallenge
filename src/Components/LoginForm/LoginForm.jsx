@@ -13,7 +13,7 @@ import {
 import { useState } from 'react';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import { useFormik } from 'formik';
-import alkemyUrl from '../../Utils/alkemyUrl';
+import { alkemyUrl } from '../../Utils/alkemyUrl';
 import useFetch from '../../Hooks/useFetch';
 import { setCurrentUser } from '../../Redux/Actions/userActions';
 const LoginForm = () => {
@@ -43,7 +43,7 @@ const LoginForm = () => {
     },
     validate,
     onSubmit: async values => {
-      fetchData('post', `http://challenge-react.alkemy.org/`, setCurrentUser, {
+      fetchData('post', `${alkemyUrl}`, setCurrentUser, {
         email: values.email,
         password: values.password,
       });
