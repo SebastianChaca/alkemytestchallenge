@@ -108,6 +108,7 @@ const LoginForm = () => {
           width="full"
           boxShadow="lg"
           disabled={loading || !formik.values.email || !formik.values.password}
+          isLoading={loading}
         >
           Iniciar sesión
         </Button>

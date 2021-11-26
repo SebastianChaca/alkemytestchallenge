@@ -1,4 +1,4 @@
-import { Input, Text } from '@chakra-ui/react';
+import { Input, Text, FormLabel, FormControl } from '@chakra-ui/react';
 import { useState } from 'react';
 
 const SearchBar = ({ fetchData, url, action, loading }) => {
@@ -23,19 +23,27 @@ const SearchBar = ({ fetchData, url, action, loading }) => {
   return (
     <div>
       <form onSubmit={e => handleSubmit(e)}>
-        <Input
-          borderRadius="10px"
-          w="400px"
-          m="10px"
-          borderColor="black"
-          value={value}
-          onChange={e => handleChange(e)}
-          isDisabled={loading}
-          placeholder={loading ? 'cargando...' : 'ingrese un ingrediente..'}
-        />
+        <FormControl display="flex" alignItems="end">
+          <FormLabel>Buscar :</FormLabel>
+          <Input
+            variant="flushed"
+            // borderRadius="10px"
+            w="400px"
+            borderColor="black"
+            value={value}
+            onChange={e => handleChange(e)}
+            isDisabled={loading}
+            placeholder={loading ? 'cargando...' : 'ingrese un ingrediente..'}
+          />
+        </FormControl>
         {error && (
-          <Text textStyles="captionSemibold" color="alkemy.error">
-            Ingrese mas de dos caracteres
+          <Text
+            textStyle="captionRegular"
+            color="alkemy.error"
+            textAlign="center"
+            my="5px"
+          >
+            {'Ingrese mas de dos caracteres'}
           </Text>
         )}
       </form>
