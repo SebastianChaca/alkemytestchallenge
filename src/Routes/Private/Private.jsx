@@ -7,7 +7,7 @@ const Private = () => {
   const mapRoutes = routes => {
     return routes.map(route => {
       return (
-        <PrivateRouteComponent key={route.id} path={route.path}>
+        <PrivateRouteComponent key={route.id} exact path={route.path}>
           {route.component}
         </PrivateRouteComponent>
       );

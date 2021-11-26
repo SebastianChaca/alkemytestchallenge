@@ -10,12 +10,9 @@ const useFetch = () => {
     setLoading(true);
 
     try {
-      if (!response && !error) {
-        const response = await axios({ method, url, data });
-        console.log(response);
-        dispatch(action(response.data));
-        setResponse(response.data);
-      }
+      const response = await axios({ method, url, data });
+      dispatch(action(response.data));
+      setResponse(response.data);
     } catch (error) {
       setError(error.response?.data?.error);
     } finally {

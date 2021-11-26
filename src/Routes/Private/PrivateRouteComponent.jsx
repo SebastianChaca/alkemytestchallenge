@@ -10,7 +10,7 @@ const PrivateRouteComponent = ({ children, path }) => {
     <Route
       path={path}
       render={() => {
-        return token ? children : <Redirect to="/login"></Redirect>;
+        return token ? children : <Redirect to="/public/login"></Redirect>;
       }}
     ></Route>
   );

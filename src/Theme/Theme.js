@@ -8,11 +8,10 @@ export const theme = extendTheme({
     },
   },
   colors: {
-    nucba: {
+    alkemy: {
       form: '#ffff',
-      primary: '#ed1582',
-      third: '#B84E9F',
-      fourth: '#deb0eb',
+      primary: '#2E4C6D',
+      secondary: '#753188',
       hover: '#050505',
       grisUno: '#666666',
       grisDos: '#999999',

@@ -1,12 +1,13 @@
 import React from 'react';
-import { ChakraProvider, theme } from '@chakra-ui/react';
-
-import { BrowserRouter as Router } from 'react-router-dom';
+import { ChakraProvider } from '@chakra-ui/react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { theme } from './Theme/Theme';
 
 import { store, persistor } from './Redux/Store/store';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { Private, Public } from './Routes/Index';
+import Navbar from './Components/NavBar/Navbar';
 
 function App() {
   return (
@@ -14,8 +15,15 @@ function App() {
       <PersistGate persistor={persistor}>
         <ChakraProvider theme={theme}>
           <Router>
-            <Public />
-            <Private />
+            <Switch>
+              <Route path="/public">
+                <Public />
+              </Route>
+              <Route path="/">
+                <Navbar />
+                <Private />
+              </Route>
+            </Switch>
           </Router>
         </ChakraProvider>
       </PersistGate>

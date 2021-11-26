@@ -7,7 +7,7 @@ const Public = () => {
   const { token } = useSelector(state => state.user);
   const mapRoutes = routes => {
     return routes.map(route => {
-      if (route.path === '/login') {
+      if (route.path === '/public/login') {
         return (
           <Route key={route.id} exact path={route.path}>
             {token ? <Redirect to="/" /> : route.component}
