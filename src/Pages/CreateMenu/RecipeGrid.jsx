@@ -7,7 +7,7 @@ const RecipeGrid = ({ loading, isChecked }) => {
   const { recipies } = useSelector(state => state.searchedRecipies);
   if (loading) {
     return (
-      <Flex>
+      <Flex w="100%" justifyContent="center" mt="50px">
         <Spinner />
       </Flex>
     );
@@ -18,7 +18,7 @@ const RecipeGrid = ({ loading, isChecked }) => {
   return (
     <Grid
       w="100%"
-      templateColumns="repeat(2, 430px)"
+      templateColumns="repeat(2, 420px)"
       justifyContent="center"
       m="20px"
     >
