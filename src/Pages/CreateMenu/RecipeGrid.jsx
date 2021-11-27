@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import React from 'react';
 import RecipeCard from '../../Components/RecipeCard/RecipeCard';
 
-const RecipeGrid = ({ loading }) => {
+const RecipeGrid = ({ loading, isChecked }) => {
   const { recipies } = useSelector(state => state.searchedRecipies);
   if (loading) {
     return (
@@ -24,7 +24,7 @@ const RecipeGrid = ({ loading }) => {
     >
       {recipies &&
         recipies.slice(0, 4).map(r => {
-          return <RecipeCard recipe={r} key={r.id} />;
+          return <RecipeCard recipe={r} key={r.id} isChecked={isChecked} />;
         })}
     </Grid>
   );

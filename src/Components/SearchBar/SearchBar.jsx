@@ -1,7 +1,8 @@
 import { Input, Text, FormLabel, FormControl } from '@chakra-ui/react';
 import { useState } from 'react';
+import React from 'react';
 
-const SearchBar = ({ fetchData, url, action, loading }) => {
+const SearchBar = ({ fetchData, url, isChecked, action, loading }) => {
   const [value, setValue] = useState('');
   const [error, setError] = useState(null);
 
@@ -27,7 +28,6 @@ const SearchBar = ({ fetchData, url, action, loading }) => {
           <FormLabel>Buscar :</FormLabel>
           <Input
             variant="flushed"
-            // borderRadius="10px"
             w="400px"
             borderColor="black"
             value={value}

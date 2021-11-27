@@ -1,5 +1,5 @@
-import { Flex, Box } from '@chakra-ui/react';
-import React from 'react';
+import { Flex, Box, Checkbox, Text } from '@chakra-ui/react';
+import { useState } from 'react';
 import SearchBar from '../../Components/SearchBar/SearchBar';
 import useFetch from '../../Hooks/useFetch';
 import { setSearchedRecipies } from '../../Redux/Actions/searchedRecipiesActions';
@@ -8,8 +8,13 @@ import RecipeGrid from './RecipeGrid';
 
 const CreateMenu = () => {
   const { fetchData, loading } = useFetch();
+  const [diet, setDiet] = useState(false);
   const getUrl = value => {
-    return `${spoonacular}/recipes/complexSearch?query=${value}&minCalories=0&number=15&${apiKey}`;
+    if (diet) {
+      return `${spoonacular}/recipes/complexSearch?query=${value}&diet=vegetarian&minCalories=0&number=15&${apiKey}`;
+    } else {
+      return `${spoonacular}/recipes/complexSearch?query=${value}&minCalories=0&number=15&${apiKey}`;
+    }
   };
 
   return (
@@ -21,8 +26,14 @@ const CreateMenu = () => {
           action={setSearchedRecipies}
           loading={loading}
         />
+        <Checkbox
+          mx="10px"
+          isChecked={diet}
+          onChange={e => setDiet(e.target.checked)}
+        />
+        <Text>Vegetariano</Text>
       </Flex>
-      <RecipeGrid loading={loading} />
+      <RecipeGrid loading={loading} isChecked={diet} />
     </Box>
   );
 };
