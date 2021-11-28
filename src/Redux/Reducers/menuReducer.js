@@ -13,7 +13,7 @@ import {
 
 const INITIAL_STATE = {
   menu: [],
-  totals: { healthScore: 0, price: 0, minutes: 0, calories: 0 },
+  totals: { healthScore: 0, price: 0, minutes: 0, calories: 0, items: 0 },
   menuIsFinished: false,
 };
 

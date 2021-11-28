@@ -15,7 +15,7 @@ const SidebarMenu = () => {
   const toast = useToast();
   const history = useHistory();
   const { menu, totals } = useSelector(state => state.menu);
-  const { healthScore, price, minutes, calories } = totals;
+  const { healthScore, price, minutes, calories, items } = totals;
   const isVegan = menu.filter(item => item.vegan);
 
   const dispatch = useDispatch();
@@ -23,6 +23,16 @@ const SidebarMenu = () => {
     dispatch(removeRecipe(id));
   };
   const handleCreateMenu = () => {
+    if (items < 4) {
+      toast({
+        title: '¡ Atencion !',
+        description: 'Debes elejir al menos 4 platos',
+        status: 'error',
+        duration: 5000,
+        isClosable: true,
+      });
+      return;
+    }
     if (isVegan.length < 2) {
       toast({
         title: '¡ Atencion !',
@@ -45,6 +55,13 @@ const SidebarMenu = () => {
   };
   const handleRemoveAll = () => {
     dispatch(removeAll());
+    toast({
+      title: '¡ Atencion !',
+      description: 'Se eliminaron todos los platos',
+      status: 'error',
+      duration: 5000,
+      isClosable: true,
+    });
   };
   useEffect(() => {
     if (menu.length > 0) {
