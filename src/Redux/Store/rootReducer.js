@@ -6,7 +6,7 @@ import { userReducer, searchedRecipiesReducer, menuReducer } from '../Reducers';
 const persistConfig = {
   key: 'root',
   storage: storage,
-  whitelist: ['user'],
+  whitelist: ['user', 'menu'],
 };
 
 const rootReducer = combineReducers({

@@ -2,9 +2,11 @@ import { Image, Text, Flex, Button, Box } from '@chakra-ui/react';
 import { useDispatch } from 'react-redux';
 import React from 'react';
 import { setRecipe } from '../../Redux/Actions/menuActions';
+import Listitem from '../ListItem/Listitem';
 
 const RecipeCard = ({ recipe, isChecked }) => {
   const dispatch = useDispatch();
+
   const handleClick = () => {
     const newRecipe = { ...recipe, vegetarian: isChecked };
     dispatch(setRecipe(newRecipe));
@@ -28,43 +30,17 @@ const RecipeCard = ({ recipe, isChecked }) => {
       <Image boxSize="200px" objectFit="contain" src={recipe?.image} />
 
       <Box w="90%">
-        <Flex justifyContent="left" alignItems="center" w="100%">
-          <Text textStyle="semiBold" my="5px" w="250px" textAlign="left">
-            Calorías :
-          </Text>
-          <Flex>
-            <Text textStyle="regular" mr="3px">
-              {recipe?.nutrition.nutrients[0].amount}{' '}
-            </Text>
-            <Text textStyle="regular" mr="3px">
-              {recipe?.nutrition.nutrients[0].unit}
-            </Text>
-          </Flex>
-        </Flex>
-        <Flex justifyContent="left" alignItems="left" w="100%">
-          <Text textStyle="semiBold" my="5px" w="250px" textAlign="left">
-            Precio:
-          </Text>
-          <Text textStyle="regular" mr="3px">
-            ${recipe?.pricePerServing}
-          </Text>
-        </Flex>
-        <Flex justifyContent="left" alignItems="left" w="100%">
-          <Text textStyle="semiBold" my="5px" w="250px" textAlign="left">
-            Minutos de preparación :
-          </Text>
-          <Text textStyle="regular" mr="3px">
-            {recipe?.readyInMinutes}
-          </Text>
-        </Flex>
-        <Flex justifyContent="left" alignItems="left" w="100%">
-          <Text textStyle="semiBold" my="5px" w="250px" textAlign="left">
-            Health score :
-          </Text>
-          <Text textStyle="regular" mr="3px">
-            {recipe?.healthScore}
-          </Text>
-        </Flex>
+        <Listitem
+          title="Calorías"
+          item={recipe?.nutrition.nutrients[0].amount}
+          calories
+        />
+        <Listitem title="Precio" item={recipe?.pricePerServing} price />
+        <Listitem
+          title="Minutos de preparación"
+          item={recipe?.readyInMinutes}
+        />
+        <Listitem title="Health score" item={recipe?.healthScore} />
       </Box>
       <Button
         onClick={() => handleClick()}

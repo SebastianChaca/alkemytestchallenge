@@ -4,7 +4,7 @@ import SearchBar from '../../Components/SearchBar/SearchBar';
 import useFetch from '../../Hooks/useFetch';
 import { setSearchedRecipies } from '../../Redux/Actions/searchedRecipiesActions';
 import { spoonacular, apiKey } from '../../Utils/spoonacularUrl';
-import RecipeGrid from './RecipeGrid';
+import RecipeGrid from '../../Components/RecipeGrid/RecipeGrid';
 import SidebarMenu from '../../Components/SidebarMenu/SidebarMenu';
 
 const CreateMenu = () => {
@@ -32,6 +32,8 @@ const CreateMenu = () => {
           mx="10px"
           isChecked={diet}
           onChange={e => setDiet(e.target.checked)}
+          borderColor="alkemy.primary"
+          border="1px solid"
         />
         <Text>Vegetariano</Text>
       </Flex>

@@ -2,7 +2,8 @@ import {
   SET_RECIPE,
   GET_TOTALS,
   REMOVE_RECIPE,
-  removeRecipe,
+  REMOVE_ALL,
+  CREATE_MENU,
 } from '../Actions/menuActions';
 import {
   addRecipeToMenu,
@@ -12,6 +13,7 @@ import {
 
 const INITIAL_STATE = {
   menu: [],
+  totals: { healthScore: 0, price: 0, minutes: 0, calories: 0 },
 };
 
 const userReducer = (state = INITIAL_STATE, action) => {
@@ -31,6 +33,10 @@ const userReducer = (state = INITIAL_STATE, action) => {
         ...state,
         menu: removeItemFromCart(state.menu, action.payload),
       };
+    case REMOVE_ALL: {
+      return INITIAL_STATE;
+    }
+
     default:
       return state;
   }
