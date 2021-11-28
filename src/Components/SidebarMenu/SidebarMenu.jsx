@@ -14,7 +14,7 @@ import Listitem from '../ListItem/Listitem';
 const SidebarMenu = () => {
   const toast = useToast();
   const history = useHistory();
-  const { menu, totals } = useSelector(state => state.menu);
+  const { menu, totals, menuIsFinished } = useSelector(state => state.menu);
   const { healthScore, price, minutes, calories, items } = totals;
   const isVegan = menu.filter(item => item.vegan);
 
@@ -131,16 +131,18 @@ const SidebarMenu = () => {
             item={healthScore}
             caption
           />
-          <Button
-            bg="alkemy.primary"
-            color="alkemy.form"
-            onClick={() => handleCreateMenu()}
-            w="100%"
-            size="sm"
-            mt="10px"
-          >
-            Crear Menú
-          </Button>
+          {!menuIsFinished && (
+            <Button
+              bg="alkemy.primary"
+              color="alkemy.form"
+              onClick={() => handleCreateMenu()}
+              w="100%"
+              size="sm"
+              mt="10px"
+            >
+              Crear Menú
+            </Button>
+          )}
           <Button
             variant="outline"
             borderColor="alkemy.primary"
@@ -150,7 +152,7 @@ const SidebarMenu = () => {
             mt="10px"
             onClick={() => handleRemoveAll()}
           >
-            Eliminar todos
+            {menuIsFinished ? 'Eliminar menú' : 'Eliminar todos'}
           </Button>
         </>
       )}

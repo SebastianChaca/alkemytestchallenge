@@ -35,7 +35,7 @@ export const getTotals = menu => {
       items: 0,
     }
   );
-  console.log(menuTotal);
+
   return {
     ...menuTotal,
     healthScore: menuTotal.healthScore / menuTotal.items,
