@@ -97,7 +97,7 @@ const SidebarMenu = () => {
       {menu.length > 0 && (
         <>
           <Listitem
-            title="Calorias "
+            title="Calorias totales "
             item={parseFloat(calories).toFixed(2)}
             caption
             calories
@@ -108,8 +108,12 @@ const SidebarMenu = () => {
             caption
             price
           />
-          <Listitem title="Minutos" item={minutes} caption />
-          <Listitem title="Health score" item={healthScore} caption />
+          <Listitem title="Promedio de minutos" item={minutes} caption />
+          <Listitem
+            title="Promedio de Health score"
+            item={healthScore}
+            caption
+          />
           <Button
             bg="alkemy.primary"
             color="alkemy.form"

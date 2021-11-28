@@ -20,6 +20,7 @@ export const getTotals = menu => {
     (total, menuItem) => {
       const { healthScore, readyInMinutes, pricePerServing, nutrition } =
         menuItem;
+      total.items += 1;
       total.healthScore += healthScore;
       total.minutes += readyInMinutes;
       total.price += pricePerServing;
@@ -31,7 +32,13 @@ export const getTotals = menu => {
       price: 0,
       minutes: 0,
       calories: 0,
+      items: 0,
     }
   );
-  return menuTotal;
+  console.log(menuTotal);
+  return {
+    ...menuTotal,
+    healthScore: menuTotal.healthScore / menuTotal.items,
+    minutes: menuTotal.minutes / menuTotal.items,
+  };
 };

@@ -3,10 +3,14 @@ import { useDispatch } from 'react-redux';
 import React from 'react';
 import { setRecipe } from '../../Redux/Actions/menuActions';
 import Listitem from '../ListItem/Listitem';
+import { useHistory } from 'react-router-dom';
 
 const RecipeCard = ({ recipe }) => {
+  const history = useHistory();
   const dispatch = useDispatch();
-
+  const handleDetail = () => {
+    history.push(`/recipe/${recipe.id}`);
+  };
   const handleClick = () => {
     dispatch(setRecipe(recipe));
   };
@@ -41,6 +45,16 @@ const RecipeCard = ({ recipe }) => {
         />
         <Listitem title="Health score" item={recipe?.healthScore} />
       </Box>
+      <Button
+        onClick={() => handleDetail()}
+        color="alkemy.primary"
+        variant="outline"
+        size="sm"
+        m="10px"
+        w="100%"
+      >
+        Detalle
+      </Button>
       <Button
         onClick={() => handleClick()}
         color="alkemy.form"
