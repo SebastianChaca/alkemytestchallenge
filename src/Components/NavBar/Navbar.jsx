@@ -1,7 +1,13 @@
-import { Flex, Button } from '@chakra-ui/react';
+import { Flex, Button, Text } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { singOut } from '../../Redux/Actions/userActions';
 
 const Navbar = () => {
+  const dispatch = useDispatch();
+  const handleClick = () => {
+    dispatch(singOut());
+  };
   return (
     <Flex
       as="nav"
@@ -12,9 +18,20 @@ const Navbar = () => {
       justifyContent="space-between"
       alignItems="center"
     >
-      Hola desde nav
-      <Link to="/createmenu">Crear Menú</Link>
-      <Button color="black">Login</Button>
+      Alkemy
+      <Flex>
+        <Link to="/">
+          <Text textStyle="subtitle" mr="25px">
+            Menú
+          </Text>
+        </Link>
+        <Link to="/createmenu">
+          <Text textStyle="subtitle">Crear Menú</Text>
+        </Link>
+      </Flex>
+      <Button color="black" onClick={() => handleClick()}>
+        Salir
+      </Button>
     </Flex>
   );
 };

@@ -7,6 +7,7 @@ import {
   removeRecipe,
   getTotals,
   removeAll,
+  createMenu,
 } from '../../Redux/Actions/menuActions';
 import { useHistory } from 'react-router-dom';
 import Listitem from '../ListItem/Listitem';
@@ -16,7 +17,7 @@ const SidebarMenu = () => {
   const { menu, totals } = useSelector(state => state.menu);
   const { healthScore, price, minutes, calories } = totals;
   const isVegan = menu.filter(item => item.vegan);
-  console.log(isVegan);
+
   const dispatch = useDispatch();
   const handleRemove = id => {
     dispatch(removeRecipe(id));
@@ -32,6 +33,7 @@ const SidebarMenu = () => {
       });
       return;
     }
+    dispatch(createMenu());
     history.push('/');
     toast({
       title: '¡ Exito !',
@@ -60,6 +62,7 @@ const SidebarMenu = () => {
       left="20px"
       borderRadius="10px"
       boxShadow="2xl"
+      zIndex={1000}
     >
       {menu.length > 0 ? (
         menu.map(menuItem => {

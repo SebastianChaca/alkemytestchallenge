@@ -5,7 +5,6 @@ import useFetch from '../../Hooks/useFetch';
 import { setSearchedRecipies } from '../../Redux/Actions/searchedRecipiesActions';
 import { spoonacular, apiKey } from '../../Utils/spoonacularUrl';
 import RecipeGrid from '../../Components/RecipeGrid/RecipeGrid';
-import SidebarMenu from '../../Components/SidebarMenu/SidebarMenu';
 
 const CreateMenu = () => {
   const { fetchData, loading } = useFetch();
@@ -13,9 +12,9 @@ const CreateMenu = () => {
 
   const getUrl = value => {
     if (diet) {
-      return `${spoonacular}/recipes/complexSearch?query=${value}&diet=vegan&minCalories=0&number=15&addRecipeInformation=true&${apiKey}`;
+      return `${spoonacular}/recipes/complexSearch?query=${value}&diet=vegan&minCalories=0&number=8&addRecipeInformation=true&${apiKey}`;
     } else {
-      return `${spoonacular}/recipes/complexSearch?query=${value}&minCalories=0&number=15&addRecipeInformation=true&${apiKey}`;
+      return `${spoonacular}/recipes/complexSearch?query=${value}&minCalories=0&number=8&addRecipeInformation=true&${apiKey}`;
     }
   };
 
@@ -37,8 +36,7 @@ const CreateMenu = () => {
         />
         <Text>Vegan</Text>
       </Flex>
-      <RecipeGrid loading={loading} isChecked={diet} />
-      <SidebarMenu />
+      <RecipeGrid loading={loading} type="recipies" />
     </Box>
   );
 };

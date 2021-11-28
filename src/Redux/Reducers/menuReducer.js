@@ -14,6 +14,7 @@ import {
 const INITIAL_STATE = {
   menu: [],
   totals: { healthScore: 0, price: 0, minutes: 0, calories: 0 },
+  menuIsFinished: false,
 };
 
 const userReducer = (state = INITIAL_STATE, action) => {
@@ -36,7 +37,9 @@ const userReducer = (state = INITIAL_STATE, action) => {
     case REMOVE_ALL: {
       return INITIAL_STATE;
     }
-
+    case CREATE_MENU: {
+      return { ...state, menuIsFinished: true };
+    }
     default:
       return state;
   }

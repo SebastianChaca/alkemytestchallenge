@@ -8,6 +8,7 @@ import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { Private, Public } from './Routes/Index';
 import Navbar from './Components/NavBar/Navbar';
+import SidebarMenu from './Components/SidebarMenu/SidebarMenu';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
               </Route>
               <Route path="/">
                 <Navbar />
+                <SidebarMenu />
                 <Private />
               </Route>
             </Switch>

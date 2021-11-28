@@ -60,6 +60,7 @@ const LoginForm = () => {
       borderRadius="10px"
       mt="5%"
       mb="30px"
+      bg="alkemy.form"
     >
       <Heading textAlign="center" mt="10px">
         Bienvenido

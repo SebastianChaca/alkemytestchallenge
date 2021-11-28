@@ -19,7 +19,6 @@ export const removeRecipe = id => ({
 export const removeAll = () => ({
   type: REMOVE_ALL,
 });
-export const createMenu = menu => ({
+export const createMenu = () => ({
   type: CREATE_MENU,
-  payload: menu,
 });

@@ -3,19 +3,13 @@ import { useSelector } from 'react-redux';
 import React from 'react';
 import RecipeCard from '../RecipeCard/RecipeCard';
 
-const RecipeGrid = ({ loading, isChecked }) => {
-  const { recipies } = useSelector(state => state.searchedRecipies);
-  if (loading) {
+const MenuGrid = ({ loading, isChecked }) => {
+  const { menu, menuIsFinished } = useSelector(state => state.menu);
+
+  if (!menuIsFinished) {
     return (
       <Flex w="100%" justifyContent="center" mt="50px">
-        <Spinner />
-      </Flex>
-    );
-  }
-  if (recipies.length <= 0) {
-    return (
-      <Flex w="100%" justifyContent="center" mt="50px">
-        <Text textStyle="title"> No hay platos disponibles</Text>
+        <Text textStyle="title"> Todavía no creaste un menú</Text>
       </Flex>
     );
   }
@@ -27,8 +21,8 @@ const RecipeGrid = ({ loading, isChecked }) => {
         justifyContent="right"
         m="20px"
       >
-        {recipies.length > 0 &&
-          recipies.map(r => {
+        {menu.length > 0 &&
+          menu.map(r => {
             return <RecipeCard recipe={r} key={r.id} isChecked={isChecked} />;
           })}
       </Grid>
@@ -36,4 +30,4 @@ const RecipeGrid = ({ loading, isChecked }) => {
   );
 };
 
-export default RecipeGrid;
+export default MenuGrid;
