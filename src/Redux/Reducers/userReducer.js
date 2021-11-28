@@ -16,7 +16,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
     case SET_CURRENT_USER:
       return {
         ...state,
-        token: action.payload.token,
+        token: action.payload.jwt,
         loading: false,
       };
     case SIGN_OUT:

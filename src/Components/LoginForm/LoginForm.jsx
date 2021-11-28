@@ -44,7 +44,7 @@ const LoginForm = () => {
     validate,
     onSubmit: async values => {
       fetchData('post', `${alkemyUrl}`, setCurrentUser, {
-        email: values.email,
+        identifier: values.email,
         password: values.password,
       });
     },

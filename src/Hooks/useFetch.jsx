@@ -11,6 +11,7 @@ const useFetch = () => {
 
     try {
       const response = await axios({ method, url, data });
+
       dispatch(action(response.data));
       setResponse(response.data);
     } catch (error) {
