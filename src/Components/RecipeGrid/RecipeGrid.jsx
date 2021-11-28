@@ -4,7 +4,7 @@ import React from 'react';
 import RecipeCard from '../RecipeCard/RecipeCard';
 
 const RecipeGrid = ({ loading, isChecked }) => {
-  const { recipies } = useSelector(state => state.searchedRecipies);
+  const { recipes } = useSelector(state => state.searchedRecipes);
   if (loading) {
     return (
       <Flex w="100%" justifyContent="center" mt="50px">
@@ -12,7 +12,7 @@ const RecipeGrid = ({ loading, isChecked }) => {
       </Flex>
     );
   }
-  if (recipies.length <= 0) {
+  if (recipes.length <= 0) {
     return (
       <Flex w="100%" justifyContent="center" mt="50px">
         <Text textStyle="title"> No hay platos disponibles</Text>
@@ -27,8 +27,8 @@ const RecipeGrid = ({ loading, isChecked }) => {
         justifyContent="right"
         m="20px"
       >
-        {recipies.length > 0 &&
-          recipies.map(r => {
+        {recipes.length > 0 &&
+          recipes.map(r => {
             return <RecipeCard recipe={r} key={r.id} isChecked={isChecked} />;
           })}
       </Grid>

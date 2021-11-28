@@ -1,13 +1,13 @@
-import { GET_RECIPIES } from '../Actions/searchedRecipiesActions';
+import { GET_RECIPES } from '../Actions/searchedRecipesActions';
 
 const INITIAL_STATE = {
-  recipies: [],
+  recipes: [],
 };
 
 const userReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case GET_RECIPIES:
-      return { ...state, recipies: action.payload.results };
+    case GET_RECIPES:
+      return { ...state, recipes: action.payload.results };
     default:
       return state;
   }

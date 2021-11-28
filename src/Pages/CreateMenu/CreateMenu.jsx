@@ -1,15 +1,19 @@
 import { Flex, Box, Checkbox, Text } from '@chakra-ui/react';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import SearchBar from '../../Components/SearchBar/SearchBar';
 import useFetch from '../../Hooks/useFetch';
-import { setSearchedRecipies } from '../../Redux/Actions/searchedRecipiesActions';
+import { setSearchedRecipes } from '../../Redux/Actions/searchedRecipesActions';
 import { spoonacular, apiKey } from '../../Utils/spoonacularUrl';
 import RecipeGrid from '../../Components/RecipeGrid/RecipeGrid';
 
 const CreateMenu = () => {
   const { fetchData, loading } = useFetch();
   const [diet, setDiet] = useState(false);
+  const ref = useRef();
 
+  useEffect(() => {
+    ref.current.scrollIntoView({ behavior: 'smooth' });
+  }, []);
   const getUrl = value => {
     if (diet) {
       return `${spoonacular}/recipes/complexSearch?query=${value}&diet=vegan&minCalories=0&number=8&addRecipeInformation=true&${apiKey}`;
@@ -19,12 +23,12 @@ const CreateMenu = () => {
   };
 
   return (
-    <Box position="relative">
+    <Box position="relative" ref={ref}>
       <Flex w="100%" justifyContent="center" alignItems="center">
         <SearchBar
           fetchData={fetchData}
           url={getUrl}
-          action={setSearchedRecipies}
+          action={setSearchedRecipes}
           loading={loading}
         />
         <Checkbox
@@ -36,7 +40,7 @@ const CreateMenu = () => {
         />
         <Text>Vegan</Text>
       </Flex>
-      <RecipeGrid loading={loading} type="recipies" />
+      <RecipeGrid loading={loading} type="recipes" />
     </Box>
   );
 };

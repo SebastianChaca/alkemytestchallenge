@@ -1,19 +1,16 @@
 import { Image, Text, Flex, Button, Box } from '@chakra-ui/react';
-import { useDispatch } from 'react-redux';
 import React from 'react';
-import { setRecipe } from '../../Redux/Actions/menuActions';
-import Listitem from '../ListItem/Listitem';
 import { useHistory } from 'react-router-dom';
+import RecipeStats from '../RecipeStats/RecipeStats';
+import AddButton from '../AddButton/AddButton';
 
 const RecipeCard = ({ recipe }) => {
   const history = useHistory();
-  const dispatch = useDispatch();
+
   const handleDetail = () => {
     history.push(`/recipe/${recipe.id}`);
   };
-  const handleClick = () => {
-    dispatch(setRecipe(recipe));
-  };
+
   return (
     <Flex
       justifyContent="center"
@@ -33,17 +30,7 @@ const RecipeCard = ({ recipe }) => {
       <Image boxSize="200px" objectFit="contain" src={recipe?.image} />
 
       <Box w="90%">
-        <Listitem
-          title="Calorías"
-          item={recipe?.nutrition.nutrients[0].amount}
-          calories
-        />
-        <Listitem title="Precio" item={recipe?.pricePerServing} price />
-        <Listitem
-          title="Minutos de preparación"
-          item={recipe?.readyInMinutes}
-        />
-        <Listitem title="Health score" item={recipe?.healthScore} />
+        <RecipeStats recipe={recipe} />
       </Box>
       <Button
         onClick={() => handleDetail()}
@@ -55,16 +42,7 @@ const RecipeCard = ({ recipe }) => {
       >
         Detalle
       </Button>
-      <Button
-        onClick={() => handleClick()}
-        color="alkemy.form"
-        bg="alkemy.primary"
-        size="sm"
-        m="10px"
-        w="100%"
-      >
-        Agregar
-      </Button>
+      <AddButton recipe={recipe} />
     </Flex>
   );
 };

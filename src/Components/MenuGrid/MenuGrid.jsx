@@ -1,4 +1,4 @@
-import { Flex, Grid, Spinner, Text } from '@chakra-ui/react';
+import { Flex, Grid, Text } from '@chakra-ui/react';
 import { useSelector } from 'react-redux';
 import React from 'react';
 import RecipeCard from '../RecipeCard/RecipeCard';
