@@ -13,7 +13,7 @@ const Navbar = () => {
       alignItems="center"
     >
       Hola desde nav
-      <Link to="/craetemenu">Crear Menú</Link>
+      <Link to="/createmenu">Crear Menú</Link>
       <Button color="black">Login</Button>
     </Flex>
   );

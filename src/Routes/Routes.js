@@ -19,7 +19,7 @@ export const privateRoutes = [
   },
   {
     id: uuidv4(),
-    path: '/craetemenu',
+    path: '/createmenu',
     component: <CreateMenu />,
   },
 ];
