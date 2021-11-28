@@ -13,7 +13,7 @@ const CreateMenu = () => {
 
   const getUrl = value => {
     if (diet) {
-      return `${spoonacular}/recipes/complexSearch?query=${value}&diet=vegetarian&minCalories=0&number=15&addRecipeInformation=true&${apiKey}`;
+      return `${spoonacular}/recipes/complexSearch?query=${value}&diet=vegan&minCalories=0&number=15&addRecipeInformation=true&${apiKey}`;
     } else {
       return `${spoonacular}/recipes/complexSearch?query=${value}&minCalories=0&number=15&addRecipeInformation=true&${apiKey}`;
     }
@@ -35,7 +35,7 @@ const CreateMenu = () => {
           borderColor="alkemy.primary"
           border="1px solid"
         />
-        <Text>Vegetariano</Text>
+        <Text>Vegan</Text>
       </Flex>
       <RecipeGrid loading={loading} isChecked={diet} />
       <SidebarMenu />

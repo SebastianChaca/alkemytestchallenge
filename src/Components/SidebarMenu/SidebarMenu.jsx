@@ -15,16 +15,17 @@ const SidebarMenu = () => {
   const history = useHistory();
   const { menu, totals } = useSelector(state => state.menu);
   const { healthScore, price, minutes, calories } = totals;
-  const isVegetarian = menu.filter(item => item.vegetarian);
+  const isVegan = menu.filter(item => item.vegan);
+  console.log(isVegan);
   const dispatch = useDispatch();
   const handleRemove = id => {
     dispatch(removeRecipe(id));
   };
   const handleCreateMenu = () => {
-    if (isVegetarian.length < 2) {
+    if (isVegan.length < 2) {
       toast({
         title: '¡ Atencion !',
-        description: 'Al menos dos platos deben ser vegetarianos',
+        description: 'Al menos dos platos deben ser vegenos',
         status: 'error',
         duration: 5000,
         isClosable: true,
@@ -63,9 +64,8 @@ const SidebarMenu = () => {
       {menu.length > 0 ? (
         menu.map(menuItem => {
           return (
-            <>
+            <div key={menuItem.id}>
               <Flex
-                key={menuItem.id}
                 alignItems="center"
                 justifyContent="space-between"
                 w="100%"
@@ -85,7 +85,7 @@ const SidebarMenu = () => {
                   <AiOutlineDelete />
                 </Button>
               </Flex>
-            </>
+            </div>
           );
         })
       ) : (
@@ -93,8 +93,18 @@ const SidebarMenu = () => {
       )}
       {menu.length > 0 && (
         <>
-          <Listitem title="Calorias " item={calories} caption calories />
-          <Listitem title="Precio total" item={price} caption price />
+          <Listitem
+            title="Calorias "
+            item={parseFloat(calories).toFixed(2)}
+            caption
+            calories
+          />
+          <Listitem
+            title="Precio total"
+            item={parseFloat(price).toFixed(2)}
+            caption
+            price
+          />
           <Listitem title="Minutos" item={minutes} caption />
           <Listitem title="Health score" item={healthScore} caption />
           <Button

@@ -4,12 +4,11 @@ import React from 'react';
 import { setRecipe } from '../../Redux/Actions/menuActions';
 import Listitem from '../ListItem/Listitem';
 
-const RecipeCard = ({ recipe, isChecked }) => {
+const RecipeCard = ({ recipe }) => {
   const dispatch = useDispatch();
 
   const handleClick = () => {
-    const newRecipe = { ...recipe, vegetarian: isChecked };
-    dispatch(setRecipe(newRecipe));
+    dispatch(setRecipe(recipe));
   };
   return (
     <Flex
